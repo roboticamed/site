@@ -16,7 +16,7 @@ landing:
     - link: docs/gettingstarted/install_linux
       text: GET STARTED
       color: primary
-    - link: https://github.com/roboticamed/site
+    - link: https://github.com/roboticamed/roboticamed.github.io
       text: DOWNLOAD
       color: default
 
