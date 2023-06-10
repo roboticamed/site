@@ -26,8 +26,6 @@ jobs:
 
       - name: Build Site
         run: |
-          git submodule update --init --recursive --depth 1
-          cd doc/site
           npm install
           hugo --environment "production" --minify
       
