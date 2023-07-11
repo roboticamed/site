@@ -2,7 +2,7 @@
 title: "Raspberyy Pi 4 setup"
 linktitle: "RPi4 setup"
 date: 2023-07-08
-weight: 2
+weight: 1
 collapsible: false
 ---
 
