@@ -47,27 +47,6 @@ sudo raspi-config
 sudo reboot
 ```
 
-### Increase swap memory
-
-Some of the instructions bellow require more memory than the one available in the RPi4. For this, it is recommended to increase the SWAP memory available to the system so that compilation does not fail unexpectedly. Open the `/sbin/dphys-swapfile` and `/etc/dphys-swapfile`, and edit the line `CONF_MAXSWAP=<some_value>` to 4096. After it, reboot the RPi.
-
-```shell
-# unmount the swap
-sudo dphys-swapfile swapoff
-
-# edit the swap configuration to:
-# CONF_SWAPSIZE=2048 
-# CONF_MAXSWAP=4096
-sudo nano /sbin/dphys-swapfile
-sudo nano /etc/dphys-swapfile
-
-# configure with new values
-sudo dphys-swapfile setup
-
-# start swap
-sudo dphys-swapfile swapon
-```
-
 ### Camera module
 
 If you have a camera module available, you can enable it by following the [official guide](https://www.raspberrypi.com/documentation/accessories/camera.html)
@@ -85,7 +64,7 @@ sudo reboot
 
 ## Docker
 
-{{< alert title="Installation instruction" >}}
+{{< alert title="Installation instructions" >}}
 The instructions here provided are extracted from [Simplelearn](https://www.simplilearn.com/tutorials/docker-tutorial/raspberry-pi-docker). The official instruction avaiable at [Docker.com](https://docs.docker.com/engine/install/raspbian/) did not work at the time of writing this guide.
 {{< /alert >}}
 
