@@ -1,5 +1,5 @@
 ---
-title: "Raspberyy Pi 4 setup"
+title: "Raspberry Pi 4 setup"
 linktitle: "RPi4 setup"
 date: 2023-07-08
 weight: 1
@@ -15,15 +15,40 @@ The instructions for basic OS configuration are extracted from the [Lluvia proje
 
 On the desktop machine, download the Raspberry Pi Imager and install a fresh version of the operating system in a micro SD card.
 
+### Ubuntu Installation
 ```shell
 sudo apt install rpi-imager
+
 ```
 
-![](rpi-imager.png)
-![](rpi-imager-os-select.png)
-![](rpi-imager-sd.png)
+### Windows Installation
+For Windows users, download Raspberry Pi Imager directly using this [link](https://downloads.raspberrypi.org/imager/imager_latest.exe)
 
-Go to extra settings and enable SSH access, configure the WiFi, if needed. Click in **write** and wait for the process to complete.
+### Raspberry Pi Imager
+
+1. Select **CHOOSE OS** option to choose the Operating System.
+![](rpi-imager.png)
+
+
+2. Select **Raspberry Pi OS Lite (64-bit)**
+![](rpi-imager-os-select.png)
+
+3. Inside **CHOOSE STORAGE** , select the microSD where you will install the Raspberry Pi OS.
+![](rpi-imager-sd.jpeg)
+
+4. In the advanced  options, ensure that SSH is enabled and configure the hostname, username, password, and the Wi-Fi network to which the Raspberry Pi 4 will be connected.
+![](rpi-imager-advancedOptions.png)
+![](rpi-imager-advancedOptions2.png)
+
+5. Click on **save**, and finally, click on **write**, and wait for the process to complete.
+
+
+
+## Configurations inside the Raspberry Pi.
+
+{{< alert title="RPi configuration " >}}
+The instructions for basic OS configuration are extracted from the [Lluvia project](https://lluvia.ai/docs/gettingstarted/installation/raspberry_pi_4/).
+{{< /alert >}}
 
 Insert the micro SD card in the RPi and next, update and upgrade the operating system:
 
@@ -34,6 +59,40 @@ sudo apt upgrade
 sudo reboot
 ```
 
+## SSH connection (Optional) 
+There are two ways to initiate a remote connection between a PC and the Raspberry Pi using the SSH protocol. To get started, ensure that both devices are connected to the same network.
+
+###### **Using the Raspberry's hostname** 
+Both the username and hostname, as well as the password, set during the initial OS installation of the Raspberry Pi will be required.
+
+```shell
+ssh username@hostname.local
+```
+For example: 
+```shell
+ssh rosales@raspberrypi.local
+```
+
+###### **Using the Raspberry's IP** 
+```shell
+ssh username@raspberry_ip
+```
+For example: 
+```shell
+ssh rosales@192.168.1.77
+```
+
+**Note** - You can obtain the IP of the Raspberry Pi using the following command:
+```shell
+sudo ifconfig
+```
+![](rpi-ifconfig.png)
+
+
+
+
+
+
 ### Expand storage
 
 ```shell
@@ -41,6 +100,7 @@ sudo raspi-config
 ```
 
 ![](raspi-config-advanced-options.png)
+
 ![](raspi-config-expand-storage.png)
 
 ```shell
@@ -56,8 +116,21 @@ sudo raspi-config
 ```
 
 ![](raspi-config-interface-options.png)
+
 ![](raspi-config-legacy-camera.png)
 
+```shell
+sudo reboot
+```
+
+### I2C module
+```shell
+sudo raspi-config
+```
+
+![](raspi-config-interface-options.png)
+
+![](raspi-config-legacy-i2c.png)
 ```shell
 sudo reboot
 ```
@@ -75,8 +148,8 @@ In the Raspberry terminal, run:
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 
-# Grant priviledges to the rospi user to run docker containers
-sudo usermod -aG docker raspi
+# Grant priviledges to the Rpi Username  that was seted during the extra setting Raspberry Pi  , to run docker containers
+sudo usermod -aG docker <Rpi_username>
 
 # restart the Raspberry
 sudo reboot
