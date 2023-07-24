@@ -82,7 +82,7 @@ For example:
 ssh rosales@192.168.1.77
 ```
 
-**Note** - You can obtain the IP of the Raspberry Pi using the following command:
+>**Note** - You can obtain the IP of the Raspberry Pi using the following command:
 ```shell
 sudo ifconfig
 ```
@@ -161,7 +161,7 @@ Once logged in, try running the following commands
 docker version
 ```
 
-that should give an output similar to:
+That should give an output similar to:
 
 ```
 Client: Docker Engine - Community
