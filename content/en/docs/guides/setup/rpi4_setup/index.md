@@ -15,17 +15,41 @@ The instructions for basic OS configuration are extracted from the [Lluvia proje
 
 On the desktop machine, download the Raspberry Pi Imager and install a fresh version of the operating system in a micro SD card.
 
+For Debian-based operating systems:
+
 ```shell
 sudo apt install rpi-imager
 ```
 
+Fow Windows, the installer can be downloaded directly from [Raspberry Pi site](https://downloads.raspberrypi.org/imager/imager_latest.exe).
+
+In the Rpi Imager, click `Choose OS` and select `Raspberry Pi OS Lite (64-bit)`. 
+
 ![](rpi-imager.png)
-![](rpi-imager-os-select.png)
+![](rpi-imager-os-select-1.png)
+![](rpi-imager-os-select-2.png)
 ![](rpi-imager-sd.png)
 
-Go to extra settings and enable SSH access, configure the WiFi, if needed. Click in **write** and wait for the process to complete.
+In the additional settings, ensure that SSH is enabled and configure the username, password, and the Wi-Fi network to which the Raspberry Pi 4 will be connected.
 
-Insert the micro SD card in the RPi and next, update and upgrade the operating system:
+![](rpi-imager-extra-settings.png)
+![](rpi-imager-extra-settings-wifi.png)
+
+Finally, press the **write** button to write the image into the micro SD card.
+
+### SSH connection
+
+Connect to the Raspberry Pi via SSH using the username configured in the previous steps:
+
+```bash
+ssh <username>@<Raspberry IP>
+```
+
+where `<Raspberry IP>` is the IP address assigned to the board.
+
+### OS update
+
+Once the writing process is completed, remove the micro-SD card from the PC and insert it in the RPi. Let board boot and next, update and upgrade the operating system:
 
 ```shell
 sudo apt update
@@ -75,8 +99,8 @@ In the Raspberry terminal, run:
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 
-# Grant priviledges to the rospi user to run docker containers
-sudo usermod -aG docker raspi
+# Grant priviledges to the created user to run docker containers
+sudo usermod -aG docker <username>
 
 # restart the Raspberry
 sudo reboot
