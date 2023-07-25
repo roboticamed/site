@@ -1,23 +1,20 @@
 ---
-title: "Zumo Shield v1.2 - Raspberry Pi 4 wire connection"
-linktitle: "Wire implementation"
+title: "Raspberry Pi 4 and Zumo Shield v1.2 connection" 
+linktitle: "Raspberry Pi 4 and Zumo Shield v1.2 connection" 
 date: 2023-07-20
 weight: 1
 collapsible: false
 ---
 
 
-## Wire connection
+## Connection
 
-{{< alert title="DataSheet" >}}
-You can check datasheet of Raspberry Pi 4 from [DataSheet](https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-datasheet.pdf).
+The next image shows the connection between the **Raspberry Pi 4** and **ZumoShield v1.2**
 
-**You can check the following steps using DataSheet.** 
-{{< /alert >}}
+<br>
 
 ![](zumo_shield-RPi_connection.png)
-
-
+<br>
 
 | Pin | Wire Color |
 |-----|------------|
@@ -25,6 +22,9 @@ You can check datasheet of Raspberry Pi 4 from [DataSheet](https://datasheets.ra
 | SCL | Yellow     |
 | 5V  | Red        |
 | GND | Black      |
+
+
+> **DataSheet:** Check out the Raspberry Pi 4 Datasheet [here](https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-datasheet.pdf) for more details.
 
 
 > **Note:** These connections are only for the zumo shield 1.2 and raspberry pi 4 versions, if You have other versions please read the corresponding documentation before making the connections.

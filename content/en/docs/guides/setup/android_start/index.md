@@ -1,15 +1,19 @@
 ---
-title: "Android start"
-linktitle: "Download APK"
+title: "Install phone app"
+linktitle: "Install phone app"
 date: 2023-07-24
-weight: 5
+weight: 1
 collapsible: false
 ---
 
-You can download the APK following the next link: [APK](https://github.com/aldajo92/AndroidKt_JoyWebSocket/releases/download/1.0/JoyWebSocket.apk).
+{{< alert title="APK download" >}}
+Download the APK following the next link: [APK](https://github.com/aldajo92/AndroidKt_JoyWebSocket/releases/download/1.0/JoyWebSocket.apk).
+{{< /alert >}}
 
-After you intall the APK on your phone, just connect to the Raspberry Pi 4 ip.
+After installing the APK on your phone, connect using the Raspberry Pi 4 IP address.
 
 ![](app.jpg)
 
-> **Note:** You can found the code of the apk in the next link [APK documentation](https://github.com/aldajo92/AndroidKt_JoyWebSocket).
+<br>
+
+> **Note:** You can access the APK code through the following link: [APK documentation](https://github.com/aldajo92/AndroidKt_JoyWebSocket).
