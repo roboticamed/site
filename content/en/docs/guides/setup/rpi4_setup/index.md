@@ -83,6 +83,7 @@ ssh rosales@192.168.1.77
 ```
 
 >**Note** - You can obtain the IP of the Raspberry Pi using the following command:
+
 ```shell
 sudo ifconfig
 ```
@@ -148,14 +149,21 @@ In the Raspberry terminal, run:
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 
-# Grant priviledges to the Rpi Username  that was seted during the extra setting Raspberry Pi  , to run docker containers
-sudo usermod -aG docker <Rpi_username>
+# Grant priviledges to the Rpi4 Username  that was set during the extra setting Raspberry Pi,to run docker containers
+sudo usermod -aG docker ${RPi4_USERNAME}
+
+#Project dependencies and Docker compose
+sudo apt-get install -y libffi-dev libssl-dev python3-dev python3 python3-pip
+
+sudo pip3 install docker-compose
+
+sudo systemctl enable docker
 
 # restart the Raspberry
 sudo reboot
 ```
 
-Once logged in, try running the following commands
+Once logged in, try running the following commands:
 
 ```bash
 docker version
@@ -199,7 +207,7 @@ and run a demo container:
 docker run hello-world
 ```
 
-which should output some text like this:
+Which should output some text like this:
 
 ```
 Hello from Docker!
@@ -223,3 +231,62 @@ Share images, automate workflows, and more with a free Docker ID:
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
+
+## Troubleshooting
+
+{{< alert title="Known problems" >}}
+The instructions here provided are solutions to potential errors that may occur during the RPi4 setup
+{{< /alert >}}
+
+### **i2c-1 - video0 errors**
+
+If you encounter errors with **i2c-1** or **video0**, such as, for example, the following: **Error: Could not open file /dev/i2c-1': No such file or directory** - **Error: Could not open file /dev/video0: No such file or directory**, please follow either of the two solutions provided below:
+
+### Solution 1: Using raspi-config
+
+In the terminal, use the following command  to access the Raspberry Pi Software Configuration Tool. Then, follow these steps:
+
+```shell
+sudo raspi-config
+
+```
+
+
+1. Select option (3) Interface Options.
+![](raspi-config-interface-options.png)
+
+
+2.  Choose **I1 legacy Camera** if you are experiencing issues with **/dev/video0**. Or choose **I5 I2C** if your problem is related to **/dev/i2c-1**.
+![](raspi-config-legacy-camera.png)
+
+```shell
+sudo reboot
+
+```
+
+
+### Solution 2: Modifying config.txt.
+
+In the terminal, use the following command  to access to **config.txt**. Then, follow these steps:
+
+```shell
+cd /boot
+sudo nano config.txt
+```
+
+
+1. Once you're in **config.txt** , uncomment the line **dtparam=i2c_arm=on**.This will resolve the issue with **/dev/i2c-1**.
+![](solving_error_i2c-1.png)
+
+
+2.  Make sure that at the end of the **config.txt**, you only have the lines of code shown below.This will resolve the issue with **/dev/video0**.
+![](solving_error_video0.png)
+
+
+3. Save the configuration by pressing **Ctrl+s** and exit by pressing **Ctrl+x** and then reboot the RPi
+```shell
+sudo reboot
+
+```
+
+
