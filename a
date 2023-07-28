@@ -1,0 +1,71 @@
+[33mcommit 258a033453b0b5f8b62796f8c29abb076e9c5188[m[33m ([m[1;36mHEAD -> [m[1;32mEstiben[m[33m, [m[1;31mforked/Estiben[m[33m)[m
+Author: Estiben Fernández <efernandeze@unal.edu.co>
+Date:   Wed Jul 26 19:35:31 2023 -0500
+
+     doc: updated
+
+[33mcommit c07a58616ada90e277418fa034d5073f42aa6142[m
+Author: Estiben Fernández <efernandeze@unal.edu.co>
+Date:   Tue Jul 25 14:09:48 2023 -0500
+
+    doc: update Rpi4 Setup and Bringup
+
+[33mcommit 6365c1746662d9a206b4b856e6c6606f6bfa4b35[m
+Author: Estiben Fernández <efernandeze@unal.edu.co>
+Date:   Mon Jul 24 15:22:20 2023 -0500
+
+    getting started and bringup
+
+[33mcommit 87102df8ce07330d937cb47ea2d86da6a225edbf[m
+Author: Estiben Fernández <efernandeze@unal.edu.co>
+Date:   Fri Jul 21 18:27:09 2023 -0500
+
+    doc: install process
+
+[33mcommit beb460aa3ea1eb1ba6bb4207529f5c6d3140f2ff[m
+Author: Estiben Fernández <efernandeze@unal.edu.co>
+Date:   Fri Jul 21 18:26:57 2023 -0500
+
+    doc: install process
+
+[33mcommit b727ecfba2118b9274b3901f7b6285e4d89f0d9b[m[33m ([m[1;32mmain[m[33m)[m
+Author: Juan David Adarve <juanda0718@gmail.com>
+Date:   Mon Jul 17 13:35:33 2023 -0500
+
+    NS: isntructions to setup RPi4 (#2)
+    
+    * chore: OS and docker setup.
+    
+    * chore: removed swap memory instructions.
+    
+    * chore: Added setup page for Theia.
+
+[33mcommit a33c2dc5099a494d967d844087570fa6fa156c2d[m
+Author: Juan David Adarve <juanda0718@gmail.com>
+Date:   Sat Jun 10 11:18:58 2023 -0500
+
+    NS: setup hugo site (#1)
+    
+    * Added site skeleton.
+    
+    * Updated gitfow
+    
+    * Remove condition to deploy.
+    
+    * Change to trigger pipeline
+    
+    * Added hugo workflow.
+    
+    * Added on.push
+    
+    * Added branch to push events.
+    
+    * Changed site config
+    
+    * Changed site URL.
+
+[33mcommit 1b79c28516f43d6343de6183c640867ad6dd5b40[m
+Author: Juan David Adarve <juanda0718@gmail.com>
+Date:   Sat Jun 10 08:59:45 2023 -0500
+
+    Initial commit
