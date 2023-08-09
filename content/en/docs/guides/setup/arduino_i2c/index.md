@@ -11,9 +11,7 @@ collapsible: false
 
 {{< alert title="Download IDE" >}}
 The Arduino's IDE can be downloaded from [Arduino IDE](https://www.arduino.cc/en/software).
-{{< /alert >}}
-
-On arduino IDE, open library manager tab
+{{< /alert >}}On Arduino IDE, open the library manager tab
 <br><br>
 ![](arduino_libraries.png)
 <br><br>
