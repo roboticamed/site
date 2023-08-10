@@ -5,43 +5,41 @@ date: 2023-08-02
 weight: 2
 collapsible: false
 ---
-In the terminal, run the next commands.
-### Connect to raspberry ssh 
 
-```
-ssh pi@hostname.local
-```
+The following instructions configure [Jupyterlab](https://jupyter.org/) as a service inside of the Raspberry Pi to offer an easier alternative to access the card than SSH.
 
 
-### Install  python3 
+## Installation
+
+Connec to the raspberry via SSH using the configured `<username>` and `<hosname>` in the [setup guide](../rpi4_setup/):
+
+```bash
+ssh <username>@<hostname>
 ```
+
+Install python3 package manager:
+
+```bash
 sudo apt install python3-pip
-
 ```
 
+Install jupyterlab
 
-### Install jupyter lab
-```
+```bash
 sudo python3 -m pip install jupyterlab
-
 ```
 
+## Configuration
 
-This command creates a blank sheet:
-```
+Next, Juupyterlab needs to be configured so that it can be accessed from outiside the Raspberry Pi localhost network. For this, create a blank file in home directory as:
+
+```bash
 touch ~/.jupyter/jupyter_lab_config.py
-
 ```
 
-Create the file using nano.
+Edit the file, using `nano` for instance, and insert the following text:
 
-command:
-```
- cat jupyter_lab_config.py
-```
-
-Should display the following on the screen:
-```
+```python
 # Configuration file for lab.
  
 c = get_config()  #noqa
@@ -54,24 +52,31 @@ c.NotebookApp.open_browser = False
 c.ServerApp.password = 'argon2:$argon2id$v=19$m=10240,t=10,p=8$Fj7xenAYBXANnbsHhLT2uw$mLeEHcj9AvNHRPa1oFRyI6jBsqFc2GzvPm8v00a31Ho'
 ```
 
+Save the file and exit the editor.
 
-Run the jupyter lab command, and it should run normally
-```
-cd
+Finally, test the configuration by running Jupyter from the current SSH session:
+
+```bash
 jupyter lab
 ```
 
+Open a web browser and access Jupyter lab by using `http://<hostname>:8888`. When asked for the password, type `pi`.
+
+![](launcher.png)
+
+
+## Service configuration
 
 To make jupyterlab server available automatically from boot up, create a systemctl service to configure its launch.
+
 ```
 # create the service file
 sudo touch /etc/systemd/system/jupyter.service
 sudo chmod 644 /etc/systemd/system/jupyter.service
 ```
 
+Open an editor with `sudo nano /etc/systemd/system/jupyter.service` and copy/paste the following text:
 
-Open an editor with sudo nano /etc/systemd/system/jupyter.service and copy/paste the following text:
->**Note** : In this guide, we don't use Ubuntu; instead, we use Pi.
 ```
 [Unit]
 Description=Jupyter Notebook
@@ -79,9 +84,9 @@ Description=Jupyter Notebook
 [Service]
 Type=simple
 ExecStart=/usr/local/bin/jupyter lab
-User=pi
-Group=pi
-WorkingDirectory=/home/pi
+User=<username>
+Group=<username>
+WorkingDirectory=/home/<username>
 Restart=always
 RestartSec=10
 #KillMode=mixed
@@ -90,30 +95,27 @@ RestartSec=10
 WantedBy=multi-user.target
 ```
 
+Replace `<username>` with the username configured in the [setup guide](../rpi4_setup/).
 
-The service can be controlled manually with the following commands:
+Enable the service upon system boot:
+
+```bash
+sudo systemctl enable jupyter.service 
 ```
+
+Reboot the system. Next time the Raspberry Pi starts, jupyter lab should start automatically and be available in the browser:
+
+```
+sudo reboot
+```
+
+{{% alert title="Additional commands" color="primary" %}}
+
+Systemctl services, such as the Jupyterlab just configured can be manually controlled with commands such as:
+
+```bash
 sudo systemctl start jupyter.service 
 sudo systemctl stop jupyter.service 
 sudo systemctl status jupyter.service 
 ```
-
-
-Enable the service upon system boot
-```
-sudo systemctl enable jupyter.service 
-```
-
-Reboot the system
-```
-sudo reboot
-```
-At the end, we should be able to enter the Jupyter Web through our server.
-
-For example: 
-
-![](serve.png)
-
-
-When finished, something similar to this image should appear on the web.
-![](launcher.png)
+{{% /alert %}}
