@@ -34,10 +34,11 @@ sudo python3 -m pip install jupyterlab
 Next, Juupyterlab needs to be configured so that it can be accessed from outiside the Raspberry Pi localhost network. For this, create a blank file in home directory as:
 
 ```bash
+mkdir ~/.jupyter
 touch ~/.jupyter/jupyter_lab_config.py
 ```
 
-Edit the file, using `nano` for instance, and insert the following text:
+Edit the file, using `nano ~/.jupyter/jupyter_lab_config.py` for instance, and insert the following text:
 
 ```python
 # Configuration file for lab.
