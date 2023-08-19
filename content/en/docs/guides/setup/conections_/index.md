@@ -27,4 +27,4 @@ The image below the connection between the **Raspberry Pi 4** and **ZumoShield v
 > **DataSheet:** Check out the Raspberry Pi 4 Datasheet [here](https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-datasheet.pdf) for more details.
 
 
-> **Note:** These connections are only for the zumo shield 1.2 and raspberry pi 4 versions, if You have other versions please read the corresponding documentation before making the connections.
+> **Note:** These connections are only for the zumo shield v1.2 and raspberry pi 4 versions, if You have other versions please read the corresponding documentation before making the connections.
